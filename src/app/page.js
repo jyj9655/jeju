@@ -168,14 +168,14 @@ export default function Component() {
         <h1 className="text-3xl font-bold mb-6 text-amber-800 text-center">제주 2박 3일 일정</h1>
         {days.map((day, index) => (
           <motion.section
+            layout
             key={day.id}
             ref={sectionRefs.current[index]}
             className="mb-8 bg-white rounded-lg shadow-lg overflow-hidden"
             id={day.id}
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 0 }}
+            animate={{ opacity: 1 }} 
             transition={{ duration: 0.5 }}
-            layout
           >
             <div className="bg-amber-500 text-white p-2">
               <h2 className="text-2xl font-bold">{day.name}</h2>
