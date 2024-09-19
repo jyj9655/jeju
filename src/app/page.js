@@ -87,8 +87,8 @@ export default function Component() {
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return
     const distance = touchStart - touchEnd
-    const isSwipeDown = distance < -50
-    const isSwipeUp = distance > 50
+    const isSwipeDown = distance < -100
+    const isSwipeUp = distance > 100
     const currentIndex = days.findIndex(day => day.id === activeSection)
     if (isSwipeDown && currentIndex > 0) {
       scrollToSection(days[currentIndex - 1].id)
