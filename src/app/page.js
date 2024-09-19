@@ -10,32 +10,59 @@ const days = [
   { 
     id: 'day1', 
     name: '10월 4일',
+    flight: { departure: '09:50 AM', arrival: '11:00 AM' },
+    accommodation: { name: '노블피아 호텔', address: '제주 서귀포시 명동로 46' },
+    schedule: [
+      { time: '09:00', activity: '아침 식사' },
+      { time: '11:00', activity: '관광지 방문' },
+      { time: '13:00', activity: '점심 식사' }
+    ],
+    restaurants: [
+      { name: '맛집 1', image: '/placeholder.svg?height=200&width=300' },
+      { name: '맛집 2', image: '/placeholder.svg?height=200&width=300' }
+    ],
+    attractions: [
+      { name: '명소 1', image: '/placeholder.svg?height=200&width=300' },
+      { name: '명소 2', image: '/placeholder.svg?height=200&width=300' }
+    ],
     sections: ['flight', 'accommodation', 'schedule', 'restaurants', 'attractions']
   },
   { 
     id: 'day2', 
     name: '10월 5일',
+    accommodation: { name: '제주성산골든튤립호텔', address: '제주 서귀포시 성산읍 일출로 31' },
+    schedule: [
+      { time: '09:00', activity: '아침 산책' },
+      { time: '11:00', activity: '관광지 방문' },
+      { time: '14:00', activity: '카페 방문' }
+    ],
+    restaurants: [
+      { name: '맛집 3', image: '/placeholder.svg?height=200&width=300' },
+      { name: '맛집 4', image: '/placeholder.svg?height=200&width=300' }
+    ],
+    attractions: [
+      { name: '명소 3', image: '/placeholder.svg?height=200&width=300' },
+      { name: '명소 4', image: '/placeholder.svg?height=200&width=300' }
+    ],
     sections: ['accommodation', 'schedule', 'restaurants', 'attractions']
   },
   { 
     id: 'day3', 
     name: '10월 6일',
+    flight: { departure: '19:50 PM', arrival: '21:05 PM' },
+    schedule: [
+      { time: '10:00', activity: '조식 뷔페' },
+      { time: '12:00', activity: '기념품 쇼핑' },
+      { time: '15:00', activity: '공항으로 이동' }
+    ],
+    restaurants: [
+      { name: '맛집 5', image: '/placeholder.svg?height=200&width=300' }
+    ],
+    attractions: [
+      { name: '명소 5', image: '/placeholder.svg?height=200&width=300' }
+    ],
     sections: ['flight', 'schedule', 'restaurants', 'attractions']
   },
-]
-
-const restaurants = [
-  { name: '맛집 1', image: '/placeholder.svg?height=200&width=300' },
-  { name: '맛집 2', image: '/placeholder.svg?height=200&width=300' },
-  { name: '맛집 3', image: '/placeholder.svg?height=200&width=300' },
-  { name: '맛집 4', image: '/placeholder.svg?height=200&width=300' },
-]
-
-const attractions = [
-  { name: '명소 1', image: '/placeholder.svg?height=200&width=300' },
-  { name: '명소 2', image: '/placeholder.svg?height=200&width=300' },
-  { name: '명소 3', image: '/placeholder.svg?height=200&width=300' },
-  { name: '명소 4', image: '/placeholder.svg?height=200&width=300' },
 ]
 
 export default function Component() {
@@ -192,7 +219,9 @@ export default function Component() {
                       티켓
                     </button>
                   </div>
-                  <p className="text-amber-800">09:00 AM ~ 11:00 AM</p>
+                  <p className="text-amber-800">
+                    {day.flight?.departure} ~ {day.flight?.arrival}
+                  </p>
                 </div>
               )}
               {day.sections.includes('accommodation') && (
@@ -206,47 +235,37 @@ export default function Component() {
                       확인
                     </button>
                   </div>
-                  <p className="text-amber-800">호텔 이름: 그랜드 호텔</p>
-                  <p className="text-amber-800">주소: 123 메인 스트리트, 서울</p>
+                  <p className="text-amber-800">
+                    이름: {day.accommodation?.name}
+                  </p>
+                  <p className="text-amber-800">
+                    주소: {day.accommodation?.address}
+                  </p>
                 </div>
               )}
               {day.sections.includes('schedule') && (
                 <div className="bg-amber-50 rounded-lg p-4">
                   <h3 className="text-xl font-semibold mb-4 text-amber-700">일정</h3>
                   <ul className="space-y-4">
-                    <li className="flex items-center">
-                      <span className="w-16 font-medium text-amber-600">09:00</span>
-                      <span>아침 식사</span>
-                    </li>
-                    <li className="flex items-center">
-                      <span className="w-16 font-medium text-amber-600">11:00</span>
-                      <span>관광지 방문</span>
-                    </li>
-                    <li className="flex items-center">
-                      <span className="w-16 font-medium text-amber-600">13:00</span>
-                      <span>점심 식사</span>
-                    </li>
-                    <li className="flex items-center">
-                      <span className="w-16 font-medium text-amber-600">15:00</span>
-                      <span>자유 시간</span>
-                    </li>
-                    <li className="flex items-center">
-                      <span className="w-16 font-medium text-amber-600">19:00</span>
-                      <span>저녁 식사</span>
-                    </li>
+                    {day.schedule.map((item, index) => (
+                      <li key={index} className="flex items-center">
+                        <span className="w-16 font-medium text-amber-600">{item.time}</span>
+                        <span>{item.activity}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               )}
               {day.sections.includes('restaurants') && (
                 <div>
                   <h3 className="text-xl font-semibold mb-4 text-amber-700">맛집</h3>
-                  <ScrollableGallery items={restaurants} />
+                  <ScrollableGallery items={day.restaurants} />
                 </div>
               )}
               {day.sections.includes('attractions') && (
                 <div>
                   <h3 className="text-xl font-semibold mb-4 text-amber-700">가볼만한 곳</h3>
-                  <ScrollableGallery items={attractions} />
+                  <ScrollableGallery items={day.attractions} />
                 </div>
               )}
             </div>

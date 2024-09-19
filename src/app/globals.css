@@ -47,6 +47,13 @@ body {
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'KCC-Hanbit';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/KCC-Hanbit.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* 나머지 텍스트에 establishRoomNo703OTF 폰트 적용 */
 body {
   font-family: 'establishRoomNo703OTF', sans-serif;
@@ -54,4 +61,8 @@ body {
 
 button {
   font-family: 'KyoboHand', sans-serif;
+}
+
+p {
+  font-family: 'KCC-Hanbit', sans-serif;
 }
