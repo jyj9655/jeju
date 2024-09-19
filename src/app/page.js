@@ -75,29 +75,6 @@ export default function Component() {
     sectionRefs.current[index].current?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const handleTouchStart = (e) => {
-    setTouchEnd(null)
-    setTouchStart(e.targetTouches[0].clientY)
-  }
-
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientY)
-  }
-
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return
-    const distance = touchStart - touchEnd
-    const isSwipeDown = distance < -100
-    const isSwipeUp = distance > 100
-    const currentIndex = days.findIndex(day => day.id === activeSection)
-    if (isSwipeDown && currentIndex > 0) {
-      scrollToSection(days[currentIndex - 1].id)
-    }
-    if (isSwipeUp && currentIndex < days.length - 1) {
-      scrollToSection(days[currentIndex + 1].id)
-    }
-  }
-
   const ScrollableGallery = ({ items }) => {
     const scrollContainerRef = useRef(null)
 
@@ -187,9 +164,6 @@ export default function Component() {
     <div className="flex flex-col min-h-screen bg-amber-50">
       <main
         className="flex-1 overflow-y-auto px-4 py-6"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
       >
         <h1 className="text-3xl font-bold mb-6 text-amber-800 text-center">제주 2박 3일 일정</h1>
         {days.map((day, index) => (
