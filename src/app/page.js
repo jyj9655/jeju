@@ -11,38 +11,46 @@ const days = [
     id: 'day1', 
     name: '10월 4일',
     flight: { departure: '09:50 AM', arrival: '11:00 AM' },
-    accommodation: { name: '노블피아 호텔', address: '제주 서귀포시 명동로 46' },
+    accommodation: { name: '노블피아 호텔', address: '제주 서귀포시 명동로 46', image: '/images/voucher_20241004.png' },
     schedule: [
+      { time: '08:30', activity: '공항 도착 및 체크인' },
       { time: '09:00', activity: '아침 식사' },
-      { time: '11:00', activity: '관광지 방문' },
-      { time: '13:00', activity: '점심 식사' }
+      { time: '11:00', activity: '제주 도착' },
+      { time: '12:00', activity: '렌터카' },
+      { time: '13:00', activity: '점심 식사' },
+      { time: '14:00', activity: '관광 및 숙소 이동' },
+      { time: '16:00', activity: '숙소 체크인' },
+      { time: '18:00', activity: '시장 구경 및 저녁 식사' }
     ],
-    restaurants: [
-      { name: '맛집 1', image: '/placeholder.svg?height=200&width=300' },
-      { name: '맛집 2', image: '/placeholder.svg?height=200&width=300' }
+    restaurants: [  
+      { name: '맛집 1', image: '' },
+      { name: '맛집 2', image: '' }
     ],
     attractions: [
-      { name: '명소 1', image: '/placeholder.svg?height=200&width=300' },
-      { name: '명소 2', image: '/placeholder.svg?height=200&width=300' }
+      { name: '명소 1', image: '' },
+      { name: '명소 2', image: '' }
     ],
     sections: ['flight', 'accommodation', 'schedule', 'restaurants', 'attractions']
   },
   { 
     id: 'day2', 
     name: '10월 5일',
-    accommodation: { name: '제주성산골든튤립호텔', address: '제주 서귀포시 성산읍 일출로 31' },
+    accommodation: { name: '제주성산골든튤립호텔', address: '제주 서귀포시 성산읍 일출로 31', image: '/images/voucher_20241005.png' },
     schedule: [
-      { time: '09:00', activity: '아침 산책' },
-      { time: '11:00', activity: '관광지 방문' },
-      { time: '14:00', activity: '카페 방문' }
+      { time: '10:00', activity: '아침 식사' },
+      { time: '11:00', activity: '성산일출봉 이동' },
+      { time: '13:00', activity: '관광 및 점심 식사' },
+      { time: '14:00', activity: '우도 관광' },
+      { time: '18:00', activity: '숙소 체크인' },
+      { time: '19:00', activity: '저녁 식사' }
     ],
     restaurants: [
-      { name: '맛집 3', image: '/placeholder.svg?height=200&width=300' },
-      { name: '맛집 4', image: '/placeholder.svg?height=200&width=300' }
+      { name: '맛집 3', image: '' },
+      { name: '맛집 4', image: '' }
     ],
     attractions: [
-      { name: '명소 3', image: '/placeholder.svg?height=200&width=300' },
-      { name: '명소 4', image: '/placeholder.svg?height=200&width=300' }
+      { name: '명소 3', image: '' },
+      { name: '명소 4', image: '' }
     ],
     sections: ['accommodation', 'schedule', 'restaurants', 'attractions']
   },
@@ -51,15 +59,20 @@ const days = [
     name: '10월 6일',
     flight: { departure: '19:50 PM', arrival: '21:05 PM' },
     schedule: [
-      { time: '10:00', activity: '조식 뷔페' },
-      { time: '12:00', activity: '기념품 쇼핑' },
-      { time: '15:00', activity: '공항으로 이동' }
+      { time: '10:00', activity: '아침 식사' },
+      { time: '11:00', activity: '만장굴 이동' },
+      { time: '13:00', activity: '관광 및 점심 식사' },
+      { time: '14:00', activity: '함덕해수욕장 구경' },
+      { time: '19:00', activity: '저녁 식사' },
+      { time: '19:00', activity: '렌터카 반납' },
+      { time: '19:00', activity: '공항 도착 및 체크인' },
+      { time: '19:00', activity: '서울 도착' }
     ],
     restaurants: [
-      { name: '맛집 5', image: '/placeholder.svg?height=200&width=300' }
+      { name: '맛집 5', image: '' }
     ],
     attractions: [
-      { name: '명소 5', image: '/placeholder.svg?height=200&width=300' }
+      { name: '명소 5', image: '' }
     ],
     sections: ['flight', 'schedule', 'restaurants', 'attractions']
   },
@@ -178,7 +191,7 @@ export default function Component() {
               src={imageSrc}
               alt={alt}
               width={400}
-              height={300}
+              height={600}
               className="rounded-lg w-full h-auto"
             />
           </motion.div>
@@ -222,6 +235,12 @@ export default function Component() {
                   <p className="text-amber-800">
                     {day.flight?.departure} ~ {day.flight?.arrival}
                   </p>
+                  <ImagePopup
+                    isOpen={showFlightImage}
+                    onClose={() => setShowFlightImage(false)}
+                    imageSrc={day.flight.image || "/images/default-flight.png"} // 비행기 이미지
+                    alt="비행기 이미지"
+                  />
                 </div>
               )}
               {day.sections.includes('accommodation') && (
@@ -241,6 +260,12 @@ export default function Component() {
                   <p className="text-amber-800">
                     주소: {day.accommodation?.address}
                   </p>
+                  <ImagePopup
+                    isOpen={showAccommodationImage}
+                    onClose={() => setShowAccommodationImage(false)}
+                    imageSrc={day.accommodation.image}
+                    alt="숙소 이미지"
+                  />
                 </div>
               )}
               {day.sections.includes('schedule') && (
@@ -314,18 +339,6 @@ export default function Component() {
           </motion.button>
         )}
       </AnimatePresence>
-      <ImagePopup
-        isOpen={showFlightImage}
-        onClose={() => setShowFlightImage(false)}
-        imageSrc="/placeholder.svg?height=300&width=400"
-        alt="비행기 이미지"
-      />
-      <ImagePopup
-        isOpen={showAccommodationImage}
-        onClose={() => setShowAccommodationImage(false)}
-        imageSrc="/placeholder.svg?height=300&width=400"
-        alt="숙소 이미지"
-      />
     </div>
   )
 }
