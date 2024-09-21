@@ -23,7 +23,7 @@ const days = [
       { time: '18:00', activity: '시장 구경 및 저녁 식사' }
     ],
     restaurants: [  
-      { name: '맛집 1', image: '' },
+      { name: '기흥어물', description: '올래시장 횟집 추천', url: 'https://m.map.naver.com/search2/search.naver?query=%EA%B8%B0%ED%9D%A5%EC%96%B4%EB%AC%BC&sm=hty&style=v5#/map/1/30839724' },
       { name: '맛집 2', image: '' }
     ],
     attractions: [
@@ -83,6 +83,7 @@ export default function Component() {
   const [showScrollTop, setShowScrollTop] = useState(false)
   const [showFlightImage, setShowFlightImage] = useState(false)
   const [showAccommodationImage, setShowAccommodationImage] = useState(false)
+  const [showRestaurantPopup, setShowRestaurantPopup] = useState({ open: false, url: '' });
   const sectionRefs = useRef(days.map(() => React.createRef()))
   const [touchStart, setTouchStart] = useState(null)
   const [touchEnd, setTouchEnd] = useState(null)
@@ -114,6 +115,14 @@ export default function Component() {
     const index = days.findIndex(day => day.id === dayId)
     sectionRefs.current[index].current?.scrollIntoView({ behavior: 'smooth' })
   }
+  
+  const openRestaurantPopup = (url) => {
+    setShowRestaurantPopup({ open: true, url });
+  }
+  
+  const closeRestaurantPopup = () => {
+    setShowRestaurantPopup({ open: false, url: '' });
+  }
 
   const ScrollableGallery = ({ items }) => {
     const scrollContainerRef = useRef(null)
@@ -142,6 +151,14 @@ export default function Component() {
                 className="rounded-lg object-cover"
               />
               <p className="mt-2 text-center text-sm font-medium text-amber-800">{item.name}</p>
+              {item.url && (
+                <button
+                  className="mt-2 bg-amber-500 text-white px-2 py-1 rounded text-sm hover:bg-amber-600 transition-colors"
+                  onClick={() => openRestaurantPopup(item.url)}
+                >
+                  지도 보기
+                </button>
+              )}
             </div>
           ))}
         </div>
@@ -325,6 +342,28 @@ export default function Component() {
           </button>
         ))}
       </nav>
+
+      {/* Iframe Popup */}
+      {showRestaurantPopup.open && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="relative bg-white p-4 w-full h-full max-w-4xl">
+            <button
+              onClick={closeRestaurantPopup}
+              className="absolute top-2 right-2 text-gray-500"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <div className="relative h-full p-4"> {/* 여백을 추가한 부분 */}
+              <iframe
+                src={showRestaurantPopup.url}
+                className="w-full h-full rounded-lg border-2 border-gray-300"
+                title="Restaurant Map"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      )}
+      
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
