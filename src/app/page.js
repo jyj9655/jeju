@@ -22,15 +22,19 @@ const days = [
       { time: '16:00', activity: '숙소 체크인' },
       { time: '18:00', activity: '시장 구경 및 저녁 식사' }
     ],
-    restaurants: [  
-      { name: '기흥어물', description: '올래시장 횟집 추천', url: 'https://m.map.naver.com/search2/search.naver?query=%EA%B8%B0%ED%9D%A5%EC%96%B4%EB%AC%BC&sm=hty&style=v5#/map/1/30839724' },
-      { name: '맛집 2', image: '' }
-    ],
-    attractions: [
-      { name: '명소 1', image: '' },
-      { name: '명소 2', image: '' }
-    ],
-    sections: ['flight', 'accommodation', 'schedule', 'restaurants', 'attractions']
+    restaurants: { 
+      lunch: [
+        { name: '장수물식당', image: '/images/20241004_lunch_1.jpg', description: '고기국수', url: 'https://m.place.naver.com/restaurant/11864763/location?filter=location&selected_place_id=11864763' },
+        { name: '화성식당', image: '/images/20241004_lunch_2.jpg', description: '접짝뼈국', url: 'https://m.place.naver.com/restaurant/32156714/location?filter=location&selected_place_id=32156714' }
+      ],
+      dinner: [
+        { name: '맛집 3', image: '/images/dinner1.png', description: '해산물 요리', url: '' },
+      ],
+      snack: [
+        { name: '맛집 4', image: '/images/snack1.png', description: '간단한 간식', url: '' },
+      ],
+    },
+    sections: ['flight', 'accommodation', 'schedule', 'restaurants']
   },
   { 
     id: 'day2', 
@@ -44,15 +48,18 @@ const days = [
       { time: '18:00', activity: '숙소 체크인' },
       { time: '19:00', activity: '저녁 식사' }
     ],
-    restaurants: [
-      { name: '맛집 3', image: '' },
-      { name: '맛집 4', image: '' }
-    ],
-    attractions: [
-      { name: '명소 3', image: '' },
-      { name: '명소 4', image: '' }
-    ],
-    sections: ['accommodation', 'schedule', 'restaurants', 'attractions']
+    restaurants: { 
+      lunch: [
+        { name: '맛집 3', image: '/images/lunch3.png', description: '현지 식당', url: '' },
+      ],
+      dinner: [
+        { name: '맛집 4', image: '/images/dinner2.png', description: '제주 전통 요리', url: '' },
+      ],
+      snack: [
+        { name: '맛집 5', image: '/images/snack2.png', description: '야식 추천', url: '' },
+      ],
+    },
+    sections: ['accommodation', 'schedule', 'restaurants']
   },
   { 
     id: 'day3', 
@@ -68,13 +75,18 @@ const days = [
       { time: '19:00', activity: '공항 도착 및 체크인' },
       { time: '19:00', activity: '서울 도착' }
     ],
-    restaurants: [
-      { name: '맛집 5', image: '' }
-    ],
-    attractions: [
-      { name: '명소 5', image: '' }
-    ],
-    sections: ['flight', 'schedule', 'restaurants', 'attractions']
+    restaurants: { 
+      lunch: [
+        { name: '맛집 6', image: '/images/lunch6.png', description: '점심 장소', url: '' },
+      ],
+      dinner: [
+        { name: '맛집 7', image: '/images/dinner3.png', description: '해물요리', url: '' },
+      ],
+      snack: [
+        { name: '맛집 8', image: '/images/snack3.png', description: '추천 야식', url: '' },
+      ],
+    },
+    sections: ['flight', 'schedule', 'restaurants']
   },
 ]
 
@@ -83,7 +95,7 @@ export default function Component() {
   const [showScrollTop, setShowScrollTop] = useState(false)
   const [showFlightImage, setShowFlightImage] = useState(false)
   const [showAccommodationImage, setShowAccommodationImage] = useState(false)
-  const [showRestaurantPopup, setShowRestaurantPopup] = useState({ open: false, url: '' });
+  const [showRestaurantPopup, setShowRestaurantPopup] = useState({ open: false, url: '' })
   const sectionRefs = useRef(days.map(() => React.createRef()))
   const [touchStart, setTouchStart] = useState(null)
   const [touchEnd, setTouchEnd] = useState(null)
@@ -117,65 +129,80 @@ export default function Component() {
   }
   
   const openRestaurantPopup = (url) => {
-    setShowRestaurantPopup({ open: true, url });
+    setShowRestaurantPopup({ open: true, url })
   }
   
   const closeRestaurantPopup = () => {
-    setShowRestaurantPopup({ open: false, url: '' });
+    setShowRestaurantPopup({ open: false, url: '' })
   }
 
-  const ScrollableGallery = ({ items }) => {
+  const ScrollableGallery = ({ items, mealType }) => {
     const scrollContainerRef = useRef(null)
-
+  
     const scroll = (direction) => {
       const container = scrollContainerRef.current
       if (container) {
-        const scrollAmount = direction === 'left' ? -300 : 300
+        const scrollAmount = direction === 'left' ? -container.offsetWidth / 2 : container.offsetWidth / 2;
         container.scrollBy({ left: scrollAmount, behavior: 'smooth' })
       }
     }
-
+  
     return (
       <div className="relative">
-        <div 
-          ref={scrollContainerRef}
-          className="flex overflow-x-auto scrollbar-hide space-x-4 pb-4"
-        >
-          {items.map((item, index) => (
-            <div key={index} className="flex-none w-64">
-              <Image
-                src={item.image}
-                alt={item.name}
-                width={300}
-                height={200}
-                className="rounded-lg object-cover"
-              />
-              <p className="mt-2 text-center text-sm font-medium text-amber-800">{item.name}</p>
-              {item.url && (
-                <button
-                  className="mt-2 bg-amber-500 text-white px-2 py-1 rounded text-sm hover:bg-amber-600 transition-colors"
-                  onClick={() => openRestaurantPopup(item.url)}
-                >
-                  지도 보기
-                </button>
-              )}
-            </div>
-          ))}
+        <h3 className="text-xl font-semibold mb-4 text-amber-700">{mealType}</h3>
+        <div className="flex items-center justify-between">
+          <button
+            onClick={() => scroll('left')}
+            className="bg-white bg-opacity-50 rounded-full p-1 shadow-md"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft className="w-4 h-4 text-amber-800" />
+          </button>
+          <div
+            ref={scrollContainerRef}
+            className="flex overflow-x-auto scrollbar-hide pb-4"
+            style={{ scrollSnapType: 'x mandatory', width: '100%' }}
+          >
+            {items.map((item, index) => (
+              <div
+                key={index}
+                className="flex-none w-1/2 px-2 text-center relative rounded-lg border border-gray-300"
+                style={{ minWidth: '50%' }}
+              >
+                <div className="absolute inset-0 rounded-lg overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-lg object-cover"
+                    style={{ filter: 'blur(1px)', brightness: '100%' }}
+                  />
+                </div>
+
+                <div className="relative z-10 p-2 rounded-lg">
+                  <p className="mt-2 text-center text-base font-bold text-white">{item.name}</p>
+                  <p className="text-xs text-gray-200 mt-1 h-8 overflow-hidden">{item.description}</p>
+                  {item.url && (
+                    <button
+                      className="mt-2 bg-amber-500 text-white px-4 py-1 rounded text-xs hover:bg-amber-600 transition-colors mx-auto block"
+                      onClick={() => openRestaurantPopup(item.url)}
+                    >
+                      지도 보기
+                    </button>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          <button
+            onClick={() => scroll('right')}
+            className="bg-white bg-opacity-50 rounded-full p-1 shadow-md"
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="w-4 h-4 text-amber-800" />
+          </button>
         </div>
-        <button
-          onClick={() => scroll('left')}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2 shadow-md"
-          aria-label="Scroll left"
-        >
-          <ChevronLeft className="w-6 h-6 text-amber-800" />
-        </button>
-        <button
-          onClick={() => scroll('right')}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2 shadow-md"
-          aria-label="Scroll right"
-        >
-          <ChevronRight className="w-6 h-6 text-amber-800" />
-        </button>
       </div>
     )
   }
@@ -219,9 +246,7 @@ export default function Component() {
 
   return (
     <div className="flex flex-col min-h-screen bg-amber-50">
-      <main
-        className="flex-1 overflow-y-auto px-4 py-6"
-      >
+      <main className="flex-1 overflow-y-auto px-4 py-6">
         <h1 className="text-3xl font-bold mb-6 text-amber-800 text-center">제주 2박 3일 일정</h1>
         {days.map((day, index) => (
           <motion.section
@@ -271,12 +296,8 @@ export default function Component() {
                       확인
                     </button>
                   </div>
-                  <p className="text-amber-800">
-                    이름: {day.accommodation?.name}
-                  </p>
-                  <p className="text-amber-800">
-                    주소: {day.accommodation?.address}
-                  </p>
+                  <p className="text-amber-800">이름: {day.accommodation?.name}</p>
+                  <p className="text-amber-800">주소: {day.accommodation?.address}</p>
                   <ImagePopup
                     isOpen={showAccommodationImage}
                     onClose={() => setShowAccommodationImage(false)}
@@ -299,16 +320,11 @@ export default function Component() {
                 </div>
               )}
               {day.sections.includes('restaurants') && (
-                <div>
-                  <h3 className="text-xl font-semibold mb-4 text-amber-700">맛집</h3>
-                  <ScrollableGallery items={day.restaurants} />
-                </div>
-              )}
-              {day.sections.includes('attractions') && (
-                <div>
-                  <h3 className="text-xl font-semibold mb-4 text-amber-700">가볼만한 곳</h3>
-                  <ScrollableGallery items={day.attractions} />
-                </div>
+                <>
+                  <ScrollableGallery items={day.restaurants.lunch} mealType="점심" />
+                  <ScrollableGallery items={day.restaurants.dinner} mealType="저녁" />
+                  <ScrollableGallery items={day.restaurants.snack} mealType="간식" />
+                </>
               )}
             </div>
           </motion.section>
