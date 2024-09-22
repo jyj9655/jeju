@@ -6,6 +6,31 @@ import { ChevronUp, ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 
+export const metadata = {
+  title: '제주 2박 3일 일정',
+  description: '제주 2박 3일 일정',
+  openGraph: {
+    title: '제주 2박 3일 일정',
+    description: '제주 2박 3일 일정',
+    images: [
+      {
+        url: '/images/main.png', // 메인 이미지 경로
+        width: 800,
+        height: 600,
+        alt: '제주 여행 미리보기 이미지',
+      },
+    ],
+    url: 'https://yourwebsite.com', // 페이지 URL
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '제주 2박 3일 일정',
+    description: '제주 2박 3일 일정',
+    images: '/images/main.png',
+  },
+}
+
 const days = [
   { 
     id: 'day1', 
