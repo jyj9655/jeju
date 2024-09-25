@@ -68,13 +68,14 @@ const days = [
         { name: '맛집 4', image: '/images/dinner2.png', description: '제주 전통 요리', url: '' },
       ],
       snack: [
-        { name: '하하호호', image: '/images/20241005_snack_2.jpg', description: '수제버거', url: 'https://m.place.naver.com/restaurant/21824746/location' },
+        { name: '하하호호', image: '/images/20241005_snack_1.jpg', description: '수제버거', url: 'https://m.place.naver.com/restaurant/21824746/location' },
+        { name: '지미스', image: '/images/20241005_snack_2.jpg', description: '우도땅콩아이스크림', url: 'https://m.place.naver.com/restaurant/33920258/location' },
       ],
     },
     attractions: [
-      { name: '성산일출봉', image: '/images/20241004_attractions_1.jpg', description: '핑크뮬리 축제', url: 'http://hueree.com/pages.php?p=4_3_1_1' },
-      { name: '만장굴', image: '/images/20241004_attractions_1.jpg', description: '핑크뮬리 축제', url: 'http://hueree.com/pages.php?p=4_3_1_1' },
-      { name: '성산일출봉', image: '/images/20241004_attractions_1.jpg', description: '핑크뮬리 축제', url: 'http://hueree.com/pages.php?p=4_3_1_1' },
+      { name: '우도', image: '/images/20241005_attractions_1.jpg', description: '우도', url: 'https://m.place.naver.com/place/13491925/location' },
+      { name: '검멀레해변', image: '/images/20241005_attractions_2.jpg', description: '검멀레해변, 보트타는곳', url: 'https://m.place.naver.com/place/13491583/location' },
+      { name: '하고수동 해수욕장', image: '/images/20241005_attractions_3.jpg', description: '에메랄드 바다', url: 'https://m.place.naver.com/place/13491867/location' },
     ],
     sections: ['accommodation', 'schedule', 'restaurants', 'attractions']
   },
@@ -105,9 +106,9 @@ const days = [
       ],
     },
     attractions: [
-      { name: '성산일출봉', image: '/images/20241004_attractions_1.jpg', description: '성산일출봉', url: 'https://m.place.naver.com/place/11491438/location' },
-      { name: '만장굴', image: '/images/20241004_attractions_1.jpg', description: '만장굴', url: 'https://m.place.naver.com/place/34333390/location' },
-      { name: '밭디', image: '/images/20241004_attractions_1.jpg', description: '목장카페', url: 'https://m.place.naver.com/place/1394510357/location' },
+      { name: '성산일출봉', image: '/images/20241006_attractions_1.jpg', description: '성산일출봉', url: 'https://m.place.naver.com/place/11491438/location' },
+      { name: '만장굴', image: '/images/20241006_attractions_2.jpg', description: '만장굴', url: 'https://m.place.naver.com/place/34333390/location' },
+      { name: '밭디', image: '/images/20241006_attractions_3.jpg', description: '목장카페', url: 'https://m.place.naver.com/place/1394510357/location' },
     ],
     sections: ['flight', 'schedule', 'restaurants', 'attractions']
   },
