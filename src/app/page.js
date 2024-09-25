@@ -31,6 +31,7 @@ const days = [
       ],
       dinner: [
         { name: '먹고정', image: '/images/20241004_dinner_1.jpg', description: '흑돼지', url: 'https://m.place.naver.com/restaurant/16906907/location' },
+        { name: '숯검댕이', image: '/images/20241004_dinner_2.jpg', description: '흑돼지', url: 'https://m.place.naver.com/restaurant/1065289479/location' },
       ],
       snack: [
         { name: '기흥어물', image: '/images/20241004_snack_1.jpg', description: '회 포장', url: 'https://m.place.naver.com/restaurant/30839724/location' },
