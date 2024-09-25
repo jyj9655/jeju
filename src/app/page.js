@@ -61,17 +61,22 @@ const days = [
     restaurants: { 
       lunch: [
         { name: '오는정 김밥', image: '/images/20241005_lunch_1.jpg', description: '오는정김밥', url: 'https://m.place.naver.com/restaurant/1011125170/location' },
-        { name: '성산 고등어쌈밥 김치찜', image: '/images/20241005_lunch_2.png', description: '고등어쌈밥', url: 'https://m.place.naver.com/restaurant/16952594/location' },
+        { name: '표선칼국수', image: '/images/20241005_lunch_2.jpg', description: '보말칼국수,보말죽', url: 'https://m.place.naver.com/restaurant/37293163/location' },
+        { name: '성산 봄죽칼국수', image: '/images/20241005_lunch_3.jpg', description: '보말세트(죽, 칼국수), 갈치죽', url: 'https://m.place.naver.com/restaurant/1186614629/location' },
       ],
       dinner: [
         { name: '맛집 4', image: '/images/dinner2.png', description: '제주 전통 요리', url: '' },
       ],
       snack: [
-        { name: '윌라라', image: '/images/20241005_snack_1.jpg', description: '생선튀김', url: 'https://m.place.naver.com/restaurant/35416466/location' },
         { name: '하하호호', image: '/images/20241005_snack_2.jpg', description: '수제버거', url: 'https://m.place.naver.com/restaurant/21824746/location' },
       ],
     },
-    sections: ['accommodation', 'schedule', 'restaurants']
+    attractions: [
+      { name: '성산일출봉', image: '/images/20241004_attractions_1.jpg', description: '핑크뮬리 축제', url: 'http://hueree.com/pages.php?p=4_3_1_1' },
+      { name: '만장굴', image: '/images/20241004_attractions_1.jpg', description: '핑크뮬리 축제', url: 'http://hueree.com/pages.php?p=4_3_1_1' },
+      { name: '성산일출봉', image: '/images/20241004_attractions_1.jpg', description: '핑크뮬리 축제', url: 'http://hueree.com/pages.php?p=4_3_1_1' },
+    ],
+    sections: ['accommodation', 'schedule', 'restaurants', 'attractions']
   },
   { 
     id: 'day3', 
@@ -79,26 +84,32 @@ const days = [
     flight: { departure: '19:50 PM', arrival: '21:05 PM' },
     schedule: [
       { time: '10:00', activity: '아침 식사' },
-      { time: '11:00', activity: '만장굴 이동' },
-      { time: '13:00', activity: '관광 및 점심 식사' },
-      { time: '14:00', activity: '함덕해수욕장 구경' },
-      { time: '19:00', activity: '저녁 식사' },
-      { time: '19:00', activity: '렌터카 반납' },
+      { time: '11:30', activity: '성산일출봉 구경' },
+      { time: '13:00', activity: '간식' },
+      { time: '14:00', activity: '점심 식사' },
+      { time: '15:00', activity: '만장굴 or 목장카페 or 잠수함카페' },
+      { time: '17:00', activity: '함덕해수욕장 구경' },
+      { time: '18:30', activity: '렌터카 반납' },
       { time: '19:00', activity: '공항 도착 및 체크인' },
-      { time: '19:00', activity: '서울 도착' }
+      { time: '21:00', activity: '서울 도착' }
     ],
     restaurants: { 
       lunch: [
-        { name: '맛집 6', image: '/images/lunch6.png', description: '점심 장소', url: '' },
+        { name: '성산 고등어쌈밥 김치찜', image: '/images/20241006_lunch_1.jpg', description: '고등어쌈밥', url: 'https://m.place.naver.com/restaurant/16952594/location' },
       ],
       dinner: [
         { name: '맛집 7', image: '/images/dinner3.png', description: '해물요리', url: '' },
       ],
       snack: [
-        { name: '맛집 8', image: '/images/snack3.png', description: '추천 야식', url: '' },
+        { name: '윌라라', image: '/images/20241006_snack_1.jpg', description: '생선튀김', url: 'https://m.place.naver.com/restaurant/35416466/location' },
       ],
     },
-    sections: ['flight', 'schedule', 'restaurants']
+    attractions: [
+      { name: '성산일출봉', image: '/images/20241004_attractions_1.jpg', description: '성산일출봉', url: 'https://m.place.naver.com/place/11491438/location' },
+      { name: '만장굴', image: '/images/20241004_attractions_1.jpg', description: '만장굴', url: 'https://m.place.naver.com/place/34333390/location' },
+      { name: '밭디', image: '/images/20241004_attractions_1.jpg', description: '목장카페', url: 'https://m.place.naver.com/place/1394510357/location' },
+    ],
+    sections: ['flight', 'schedule', 'restaurants', 'attractions']
   },
 ]
 
