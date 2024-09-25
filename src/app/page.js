@@ -49,20 +49,19 @@ const days = [
     name: '10월 5일',
     accommodation: { name: '제주성산골든튤립호텔', address: '제주 서귀포시 성산읍 일출로 31', image: '/images/voucher_20241005.png' },
     schedule: [
-      { time: '10:00', activity: '아침 식사' },
-      { time: '11:00', activity: '성산일출봉 이동' },
-      { time: '13:00', activity: '성산일출봉 무료 코스 구경' },
-      { time: '13:00', activity: '간식[윌라라 강추!]' },
-      { time: '14:00', activity: '우도 출발' },
-      { time: '14:30', activity: '우도 한 바퀴 구경 및 보트 타기[검멀레보트]' },
-      { time: '14:30', activity: '우도 수제버거 먹고 나머지 구경' },
-      { time: '17:30', activity: '제주 도착' },
+      { time: '10:00', activity: '오는정 김밥 픽업[예약 성공시]' },
+      { time: '12:00', activity: '점심 식사' },
+      { time: '13:30', activity: '천진항 - 우도 출발' },
+      { time: '14:00', activity: '우도 한 바퀴 구경 및 보트 타기[검멀레보트]' },
+      { time: '16:00', activity: '우도 수제버거 먹고 나머지 구경' },
+      { time: '17:30', activity: '천진항 - 제주 도착' },
       { time: '18:00', activity: '숙소 체크인' },
       { time: '19:00', activity: '저녁 식사[회]' }
     ],
     restaurants: { 
       lunch: [
-        { name: '맛집 3', image: '/images/lunch3.png', description: '현지 식당', url: '' },
+        { name: '오는정 김밥', image: '/images/20241005_lunch_1.jpg', description: '오는정김밥', url: 'https://m.place.naver.com/restaurant/1011125170/location' },
+        { name: '성산 고등어쌈밥 김치찜', image: '/images/20241005_lunch_2.png', description: '고등어쌈밥', url: 'https://m.place.naver.com/restaurant/16952594/location' },
       ],
       dinner: [
         { name: '맛집 4', image: '/images/dinner2.png', description: '제주 전통 요리', url: '' },
