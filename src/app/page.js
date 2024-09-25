@@ -14,22 +14,23 @@ const days = [
     accommodation: { name: '노블피아 호텔', address: '제주 서귀포시 명동로 46', image: '/images/voucher_20241004.png' },
     schedule: [
       { time: '08:30', activity: '공항 도착 및 체크인' },
-      { time: '09:00', activity: '아침 식사' },
+      { time: '09:00', activity: '공항에서 아침 식사' },
       { time: '11:00', activity: '제주 도착' },
       { time: '12:00', activity: '렌터카' },
-      { time: '13:00', activity: '점심 식사' },
-      { time: '14:00', activity: '구경, 체험(핑크뮬리 축제, 카트)' },
-      { time: '16:00', activity: '숙소 체크인' },
-      { time: '18:00', activity: '저녁 식사' },
-      { time: '20:00', activity: '시장 구경(야식, 기념품)' }
+      { time: '12:30', activity: '점심 식사[고기국수 or 접짝뼈국]' },
+      { time: '14:00', activity: '구경, 체험[핑크뮬리 축제, 카트]' },
+      { time: '15:00', activity: '숙소 체크인 및 휴식' },
+      { time: '18:00', activity: '저녁 식사[흑돼지]' },
+      { time: '20:00', activity: '시장 구경[야식, 기념품]' }
     ],
     restaurants: { 
       lunch: [
-        { name: '장수물식당', image: '/images/20241004_lunch_1.jpg', description: '고기국수', url: 'https://m.place.naver.com/restaurant/11864763/location?filter=location&selected_place_id=11864763' },
-        { name: '화성식당', image: '/images/20241004_lunch_2.jpg', description: '접짝뼈국', url: 'https://m.place.naver.com/restaurant/32156714/location?filter=location&selected_place_id=32156714' }
+        { name: '화성식당', image: '/images/20241004_lunch_1.jpg', description: '접짝뼈국', url: 'https://m.place.naver.com/restaurant/32156714/location' },
+        { name: '장수물식당', image: '/images/20241004_lunch_2.jpg', description: '고기국수', url: 'https://m.place.naver.com/restaurant/11864763/location' },
+        { name: '올래국수', image: '/images/20241004_lunch_3.jpg', description: '고기국수', url: 'https://m.place.naver.com/restaurant/11866447/location' }
       ],
       dinner: [
-        { name: '먹고정', image: '/images/20241004_dinner_1.jpg', description: '흑돼지', url: '' },
+        { name: '먹고정', image: '/images/20241004_dinner_1.jpg', description: '흑돼지', url: 'https://m.place.naver.com/restaurant/16906907/location' },
       ],
       snack: [
         { name: '기흥어물', image: '/images/20241004_snack_1.jpg', description: '회 포장', url: 'https://m.place.naver.com/restaurant/30839724/location' },
@@ -89,6 +90,7 @@ const days = [
       dinner: [
         { name: '맛집 7', image: '/images/dinner3.png', description: '해물요리', url: '' },
       ],
+      // snack 항목이 필요 없을 경우 아예 빼버리면 됩니다.
       snack: [
         { name: '맛집 8', image: '/images/snack3.png', description: '추천 야식', url: '' },
       ],
@@ -173,8 +175,7 @@ export default function Component() {
             {items.map((item, index) => (
               <div
                 key={index}
-                className="flex-none w-1/2 px-2 text-center relative rounded-lg border border-gray-300"
-                style={{ minWidth: '50%' }}
+                className="flex-none w-1/2 md:w-1/4 px-2 text-center relative rounded-lg border border-gray-300"
               >
                 <div className="absolute inset-0 rounded-lg overflow-hidden">
                   <Image
@@ -330,7 +331,10 @@ export default function Component() {
                 <>
                   <ScrollableGallery items={day.restaurants.lunch} mealType="점심" />
                   <ScrollableGallery items={day.restaurants.dinner} mealType="저녁" />
-                  <ScrollableGallery items={day.restaurants.snack} mealType="간식" />
+                  {/* snack이 있을 때만 섹션을 보여줍니다. */}
+                  {day.restaurants.snack && day.restaurants.snack.length > 0 && (
+                    <ScrollableGallery items={day.restaurants.snack} mealType="간식" />
+                  )}
                 </>
               )}
               {day.sections.includes('attractions') && (
