@@ -18,7 +18,7 @@ const days = [
       { time: '11:00', activity: '제주 도착' },
       { time: '12:00', activity: '렌터카' },
       { time: '13:00', activity: '점심 식사' },
-      { time: '14:00', activity: '관광 및 숙소 이동' },
+      { time: '14:00', activity: '구경, 체험(핑크뮬리 축제, 카트)' },
       { time: '16:00', activity: '숙소 체크인' },
       { time: '18:00', activity: '저녁 식사' },
       { time: '20:00', activity: '시장 구경(야식, 기념품)' }
@@ -29,17 +29,17 @@ const days = [
         { name: '화성식당', image: '/images/20241004_lunch_2.jpg', description: '접짝뼈국', url: 'https://m.place.naver.com/restaurant/32156714/location?filter=location&selected_place_id=32156714' }
       ],
       dinner: [
-        { name: '맛집 3', image: '/images/dinner1.png', description: '해산물 요리', url: '' },
+        { name: '먹고정', image: '/images/20241004_dinner_1.jpg', description: '흑돼지', url: '' },
       ],
       snack: [
-        { name: '기흥어물', image: '/images/20241004_dinner_1.jpg', description: '회 포장', url: 'https://naver.me/xeA05e5J' },
-        { name: '마농치킨', image: '/images/20241004_dinner_2.jpg', description: '치킨', url: 'https://naver.me/5020Uwu8' },
-        { name: '마농토스트', image: '/images/20241004_dinner_3.jpg', description: '토스트', url: 'https://naver.me/F9NuF0KG' },
+        { name: '기흥어물', image: '/images/20241004_snack_1.jpg', description: '회 포장', url: 'https://m.place.naver.com/restaurant/30839724/location' },
+        { name: '마농치킨', image: '/images/20241004_snack_2.jpg', description: '치킨', url: 'https://m.place.naver.com/restaurant/38711080/location' },
+        { name: '마농토스트', image: '/images/20241004_snack_3.jpg', description: '토스트', url: 'https://m.place.naver.com/restaurant/1303306401/location' },
       ],
     },
     attractions: [
-      { name: '한라산 국립공원', image: '/images/hallasan.jpg', description: '제주의 가장 높은 산, 자연경관을 즐길 수 있는 명소', url: 'https://naver.com' },
-      { name: '성산일출봉', image: '/images/seongsan.jpg', description: '일출을 보기 좋은 곳, 유네스코 세계자연유산', url: 'https://naver.com' }
+      { name: '한라산 국립공원', image: '/images/hallasan.jpg', description: '핑크뮬리 축제', url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000009099' },
+      { name: '성산일출봉', image: '/images/seongsan.jpg', description: '카트', url: 'https://naver.com' }
     ],
     sections: ['flight', 'accommodation', 'schedule', 'restaurants', 'attractions']
   },
