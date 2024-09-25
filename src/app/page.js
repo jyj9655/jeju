@@ -20,7 +20,8 @@ const days = [
       { time: '13:00', activity: '점심 식사' },
       { time: '14:00', activity: '관광 및 숙소 이동' },
       { time: '16:00', activity: '숙소 체크인' },
-      { time: '18:00', activity: '시장 구경 및 저녁 식사' }
+      { time: '18:00', activity: '저녁 식사' },
+      { time: '20:00', activity: '시장 구경(야식, 기념품)' }
     ],
     restaurants: { 
       lunch: [
@@ -31,10 +32,16 @@ const days = [
         { name: '맛집 3', image: '/images/dinner1.png', description: '해산물 요리', url: '' },
       ],
       snack: [
-        { name: '맛집 4', image: '/images/snack1.png', description: '간단한 간식', url: '' },
+        { name: '기흥어물', image: '/images/20241004_dinner_1.jpg', description: '회 포장', url: 'https://naver.me/xeA05e5J' },
+        { name: '마농치킨', image: '/images/20241004_dinner_2.jpg', description: '치킨', url: 'https://naver.me/5020Uwu8' },
+        { name: '마농토스트', image: '/images/20241004_dinner_3.jpg', description: '토스트', url: 'https://naver.me/F9NuF0KG' },
       ],
     },
-    sections: ['flight', 'accommodation', 'schedule', 'restaurants']
+    attractions: [
+      { name: '한라산 국립공원', image: '/images/hallasan.jpg', description: '제주의 가장 높은 산, 자연경관을 즐길 수 있는 명소', url: 'https://naver.com' },
+      { name: '성산일출봉', image: '/images/seongsan.jpg', description: '일출을 보기 좋은 곳, 유네스코 세계자연유산', url: 'https://naver.com' }
+    ],
+    sections: ['flight', 'accommodation', 'schedule', 'restaurants', 'attractions']
   },
   { 
     id: 'day2', 
@@ -325,6 +332,9 @@ export default function Component() {
                   <ScrollableGallery items={day.restaurants.dinner} mealType="저녁" />
                   <ScrollableGallery items={day.restaurants.snack} mealType="간식" />
                 </>
+              )}
+              {day.sections.includes('attractions') && (
+                <ScrollableGallery items={day.attractions} mealType="가볼만한곳" />
               )}
             </div>
           </motion.section>
