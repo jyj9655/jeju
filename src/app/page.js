@@ -18,7 +18,7 @@ const days = [
       { time: '11:00', activity: '제주 도착' },
       { time: '12:00', activity: '렌터카' },
       { time: '12:30', activity: '점심 식사[고기국수 or 접짝뼈국]' },
-      { time: '14:00', activity: '구경, 체험[핑크뮬리 축제, 카트]' },
+      { time: '14:00', activity: '핑크뮬리 축제 구경 및 공원 산책(휴애리)' },
       { time: '15:00', activity: '숙소 체크인 및 휴식' },
       { time: '18:00', activity: '저녁 식사[흑돼지]' },
       { time: '20:00', activity: '시장 구경[야식, 기념품]' }
@@ -39,8 +39,7 @@ const days = [
       ],
     },
     attractions: [
-      { name: '한라산 국립공원', image: '/images/hallasan.jpg', description: '핑크뮬리 축제', url: 'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_200000000009099' },
-      { name: '성산일출봉', image: '/images/seongsan.jpg', description: '카트', url: 'https://naver.com' }
+      { name: '휴애리', image: '/images/20241004_attractions_1.jpg', description: '핑크뮬리 축제', url: 'http://hueree.com/pages.php?p=4_3_1_1' }
     ],
     sections: ['flight', 'accommodation', 'schedule', 'restaurants', 'attractions']
   },
@@ -51,10 +50,14 @@ const days = [
     schedule: [
       { time: '10:00', activity: '아침 식사' },
       { time: '11:00', activity: '성산일출봉 이동' },
-      { time: '13:00', activity: '관광 및 점심 식사' },
-      { time: '14:00', activity: '우도 관광' },
+      { time: '13:00', activity: '성산일출봉 무료 코스 구경' },
+      { time: '13:00', activity: '간식[윌라라 강추!]' },
+      { time: '14:00', activity: '우도 출발' },
+      { time: '14:30', activity: '우도 한 바퀴 구경 및 보트 타기[검멀레보트]' },
+      { time: '14:30', activity: '우도 수제버거 먹고 나머지 구경' },
+      { time: '17:30', activity: '제주 도착' },
       { time: '18:00', activity: '숙소 체크인' },
-      { time: '19:00', activity: '저녁 식사' }
+      { time: '19:00', activity: '저녁 식사[회]' }
     ],
     restaurants: { 
       lunch: [
@@ -64,7 +67,8 @@ const days = [
         { name: '맛집 4', image: '/images/dinner2.png', description: '제주 전통 요리', url: '' },
       ],
       snack: [
-        { name: '맛집 5', image: '/images/snack2.png', description: '야식 추천', url: '' },
+        { name: '윌라라', image: '/images/20241005_snack_1.jpg', description: '생선튀김', url: 'https://m.place.naver.com/restaurant/35416466/location' },
+        { name: '하하호호', image: '/images/20241005_snack_2.jpg', description: '수제버거', url: 'https://m.place.naver.com/restaurant/21824746/location' },
       ],
     },
     sections: ['accommodation', 'schedule', 'restaurants']
@@ -90,7 +94,6 @@ const days = [
       dinner: [
         { name: '맛집 7', image: '/images/dinner3.png', description: '해물요리', url: '' },
       ],
-      // snack 항목이 필요 없을 경우 아예 빼버리면 됩니다.
       snack: [
         { name: '맛집 8', image: '/images/snack3.png', description: '추천 야식', url: '' },
       ],
@@ -188,7 +191,7 @@ export default function Component() {
                   />
                 </div>
 
-                <div className="relative z-10 p-2 rounded-lg">
+                <div className="relative z-10 p-2 bg-black bg-opacity-20 rounded-lg">
                   <p className="mt-2 text-center text-base font-bold text-white">{item.name}</p>
                   <p className="text-xs text-gray-200 mt-1 h-8 overflow-hidden">{item.description}</p>
                   {item.url && (
