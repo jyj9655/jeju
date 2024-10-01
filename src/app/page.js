@@ -87,12 +87,11 @@ const days = [
     name: '10월 6일',
     flight: { departure: '19:50 PM', arrival: '21:05 PM' },
     schedule: [
-      { time: '10:00', activity: '아침 식사' },
-      { time: '11:30', activity: '성산일출봉 구경' },
-      { time: '13:00', activity: '간식' },
-      { time: '14:00', activity: '점심 식사' },
-      { time: '15:00', activity: '만장굴 or 목장카페 or 잠수함카페' },
-      { time: '17:00', activity: '함덕해수욕장 구경' },
+      { time: '11:00', activity: '아침 겸 점심 식사' },
+      { time: '12:00', activity: '성산일출봉 구경' },
+      { time: '13:30', activity: '간식[윌라라]' },
+      { time: '15:00', activity: '목장카페/테마파크/억새 구경 선택' },
+      { time: '17:00', activity: '저녁 식사' },
       { time: '18:30', activity: '렌터카 반납' },
       { time: '19:00', activity: '공항 도착 및 체크인' },
       { time: '21:00', activity: '서울 도착' }
@@ -102,7 +101,7 @@ const days = [
         { name: '성산 고등어쌈밥 김치찜', image: '/images/20241006_lunch_1.jpg', description: '고등어쌈밥', url: 'https://m.place.naver.com/restaurant/16952594/location' },
       ],
       dinner: [
-        { name: '맛집 7', image: '/images/dinner3.png', description: '해물요리', url: '' },
+        { name: '면주막 제주본점', image: '/images/20241006_dinner_1.jpg', description: '고기국수', url: 'https://m.place.naver.com/restaurant/1840012685/location' },
       ],
       snack: [
         { name: '윌라라', image: '/images/20241006_snack_1.jpg', description: '생선튀김', url: 'https://m.place.naver.com/restaurant/35416466/location' },
@@ -110,8 +109,10 @@ const days = [
     },
     attractions: [
       { name: '성산일출봉', image: '/images/20241006_attractions_1.jpg', description: '성산일출봉', url: 'https://m.place.naver.com/place/11491438/location' },
-      { name: '만장굴', image: '/images/20241006_attractions_2.jpg', description: '만장굴', url: 'https://m.place.naver.com/place/34333390/location' },
-      { name: '밭디', image: '/images/20241006_attractions_3.jpg', description: '목장카페', url: 'https://m.place.naver.com/place/1394510357/location' },
+      { name: '밭디', image: '/images/20241006_attractions_2.jpg', description: '목장카페', url: 'https://m.place.naver.com/place/1394510357/location' },
+      { name: '드루쿰다', image: '/images/20241006_attractions_3.jpg', description: '목장카페', url: 'https://m.place.naver.com/place/13126047/location' },
+      { name: '산굼부리', image: '/images/20241006_attractions_4.jpg', description: '억새 구경', url: 'https://m.place.naver.com/place/1394510357/location' },
+      { name: '선녀와나무꾼', image: '/images/20241006_attractions_5.jpg', description: '레트로 테마파크', url: 'https://m.place.naver.com/place/12870248/location' },
     ],
     sections: ['flight', 'schedule', 'restaurants', 'attractions']
   },
