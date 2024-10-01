@@ -68,6 +68,7 @@ const days = [
       dinner: [
         { name: '어조횟집', image: '/images/20241005_dinner_1.jpg', description: '회', url: 'https://m.place.naver.com/restaurant/893836209/location' },
         { name: '금돗', image: '/images/20241005_dinner_2.jpg', description: '흑돼지', url: 'https://m.place.naver.com/restaurant/1977280750/location' },
+        { name: '복자씨연탄구이', image: '/images/20241005_dinner_3.jpg', description: '흑돼지', url: 'https://m.place.naver.com/restaurant/35769744/location' },
       ],
       snack: [
         { name: '하하호호', image: '/images/20241005_snack_1.jpg', description: '수제버거', url: 'https://m.place.naver.com/restaurant/21824746/location' },
