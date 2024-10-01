@@ -56,16 +56,18 @@ const days = [
       { time: '16:00', activity: '우도 수제버거 먹고 나머지 구경' },
       { time: '17:30', activity: '천진항 - 제주 도착' },
       { time: '18:00', activity: '숙소 체크인' },
-      { time: '19:00', activity: '저녁 식사[회]' }
+      { time: '19:00', activity: '저녁 식사[회 or 흑돼지 선택]' }
     ],
     restaurants: { 
       lunch: [
         { name: '오는정 김밥', image: '/images/20241005_lunch_1.jpg', description: '오는정김밥', url: 'https://m.place.naver.com/restaurant/1011125170/location' },
         { name: '표선칼국수', image: '/images/20241005_lunch_2.jpg', description: '보말칼국수,보말죽', url: 'https://m.place.naver.com/restaurant/37293163/location' },
         { name: '성산 봄죽칼국수', image: '/images/20241005_lunch_3.jpg', description: '보말세트(죽, 칼국수), 갈치죽', url: 'https://m.place.naver.com/restaurant/1186614629/location' },
+        { name: '미향해장국', image: '/images/20241005_lunch_4.jpg', description: '소고기선지해장국', url: 'https://m.place.naver.com/restaurant/37898247/location' },
       ],
       dinner: [
-        { name: '맛집 4', image: '/images/dinner2.png', description: '제주 전통 요리', url: '' },
+        { name: '어조횟집', image: '/images/20241005_dinner_1.jpg', description: '회', url: 'https://m.place.naver.com/restaurant/893836209/location' },
+        { name: '금돗', image: '/images/20241005_dinner_2.jpg', description: '흑돼지', url: 'https://m.place.naver.com/restaurant/1977280750/location' },
       ],
       snack: [
         { name: '하하호호', image: '/images/20241005_snack_1.jpg', description: '수제버거', url: 'https://m.place.naver.com/restaurant/21824746/location' },
